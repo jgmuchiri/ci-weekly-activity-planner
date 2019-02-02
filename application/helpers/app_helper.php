@@ -150,23 +150,22 @@ function redirectPrev($msg = [], $tab = '', $type = 'info')
  */
 function is($group)
 {
-    $ci = &get_instance(); 
-   $role=$ci->session->userdata('role');
-   if($role){
-       if(is_array($group)){
-           $found = 0;
-           foreach($group as $g){
-               if(in_array($g,$role))
-                   $found=1;
-           }
-           if($found ==1)
-               return true;
-       }else{
-           if(in_array($group,$role))
-               return true;
-       }
-   }
- 
+    $ci = &get_instance();
+    $role = $ci->session->userdata('role');
+    if($role) {
+        if(is_array($group)) {
+            $found = 0;
+            foreach ($group as $g) {
+                if(in_array($g, $role))
+                    $found = 1;
+            }
+            if($found == 1)
+                return TRUE;
+        } else {
+            if(in_array($group, $role))
+                return TRUE;
+        }
+    }
 
     return FALSE;
 }

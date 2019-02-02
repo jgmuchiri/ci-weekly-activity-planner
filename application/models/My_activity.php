@@ -25,7 +25,8 @@ class My_activity extends CI_Model
     }
 
 
-    function update($id){
+    function update($id)
+    {
         $data = [
             'name' => $this->input->post('name'),
             'activity_date' => $this->input->post('activity_date'),
@@ -34,16 +35,17 @@ class My_activity extends CI_Model
             'description' => $this->input->post('description'),
             'updated_at' => date_stamp(),
         ];
-        if($this->db->where('id',$id)->update('activity_plan', $data))
+        if($this->db->where('id', $id)->update('activity_plan', $data))
             return TRUE;
         return FALSE;
     }
-    function getActivity($day,$hour, $activities)
+
+    function getActivity($day, $hour, $activities)
     {
         $acts = [];
 
         foreach ($activities as $activity) {
-            if(date('h',strtotime($activity['activity_start'])) == $hour && $activity['activity_date'] == $day) {
+            if(date('h', strtotime($activity['activity_start'])) == $hour && $activity['activity_date'] == $day) {
                 $acts[] = $activity;
             }
         }
@@ -104,8 +106,8 @@ class My_activity extends CI_Model
                 'room_id' => $activity->room_id,
                 'name' => $activity->name,
                 'activity_date' => date('Y-m-d', strtotime("{$activity->activity_date} +7 days")),
-                'activity_start'=>$activity->activity_start,
-                'activity_end'=>$activity->activity_end,
+                'activity_start' => $activity->activity_start,
+                'activity_end' => $activity->activity_end,
                 'description' => $activity->description,
                 'user_id' => $activity->user_id,
                 'created_at' => date_stamp(),

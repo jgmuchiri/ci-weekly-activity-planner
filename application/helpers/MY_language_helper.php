@@ -18,7 +18,7 @@
  *
  * @return    string
  */
-function lang($text, $for = '', $attributes = array())
+function lang($text, $for = '', $attributes = [])
 {
     $ci = get_instance();
 

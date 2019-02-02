@@ -17,9 +17,9 @@
  */
 function form_textarea($data = '', $value = '', $extra = '')
 {
-    $defaults = array(
-        'name' => is_array($data) ? '' : $data
-    );
+    $defaults = [
+        'name' => is_array($data) ? '' : $data,
+    ];
 
     if(!is_array($data) OR !isset($data['value'])) {
         $val = $value;
@@ -44,11 +44,11 @@ function form_textarea($data = '', $value = '', $extra = '')
  */
 function form_email($data = '', $value = '', $extra = '')
 {
-    $defaults = array(
+    $defaults = [
         'type' => 'email',
         'name' => is_array($data) ? '' : $data,
-        'value' => $value
-    );
+        'value' => $value,
+    ];
 
     return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
 }
@@ -64,11 +64,11 @@ function form_email($data = '', $value = '', $extra = '')
  */
 function form_date($data = '', $value = '', $extra = '')
 {
-    $defaults = array(
+    $defaults = [
         'type' => 'date',
         'name' => is_array($data) ? '' : $data,
-        'value' => $value
-    );
+        'value' => $value,
+    ];
 
     return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
 }
@@ -84,11 +84,11 @@ function form_date($data = '', $value = '', $extra = '')
  */
 function form_time($data = '', $value = '', $extra = '')
 {
-    $defaults = array(
+    $defaults = [
         'type' => 'time',
         'name' => is_array($data) ? '' : $data,
-        'value' => $value
-    );
+        'value' => $value,
+    ];
 
     return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
 }
@@ -137,7 +137,7 @@ function set_value($field, $default = '', $html_escape = TRUE)
  *
  * @return    string
  */
-function form_open($action = '', $attributes = array(), $hidden = array())
+function form_open($action = '', $attributes = [], $hidden = [])
 {
 
     if(!is('admin')) {
@@ -217,7 +217,7 @@ function form_close($extra = '')
 {
     if($extra == "demo") {
         $extra = '';
-        if(session('company_demo_mode') == 1 &&  !is('admin'))
+        if(session('company_demo_mode') == 1 && !is('admin'))
             return ''; //disable form in demo mode
     }
 

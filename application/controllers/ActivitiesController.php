@@ -15,7 +15,7 @@ class ActivitiesController extends CI_Controller
         $activities = $this->activity->activities();
         $days = $this->activity->days();
 
-        $this->load->view('welcome_message', compact('activities', 'days'));
+        $this->load->view('weekly_planner', compact('activities', 'days'));
     }
 
     public function create()
@@ -23,8 +23,8 @@ class ActivitiesController extends CI_Controller
         $this->form_validation->set_rules('name', 'Activity name', 'required|trim|xss_clean');
 
         $error = "success";
-        if ($this->form_validation->run() == true) {
-            if ($this->activity->insert()) {
+        if($this->form_validation->run() == TRUE) {
+            if($this->activity->insert()) {
                 $msg = 'Activity added';
             } else {
                 $msg = 'Error adding activity';
@@ -44,8 +44,8 @@ class ActivitiesController extends CI_Controller
         $this->form_validation->set_rules('name', 'Activity name', 'required|trim|xss_clean');
         $this->form_validation->set_rules('activity_date', 'Date', 'required|trim|xss_clean');
         $this->form_validation->set_rules('activity_start', 'Time', 'required|trim|xss_clean');
-        if ($this->form_validation->run() == true) {
-            if ($this->activity->update(uri_segment(3))) {
+        if($this->form_validation->run() == TRUE) {
+            if($this->activity->update(uri_segment(3))) {
                 $msg = 'Activity updated';
                 $status = "success";
             } else {
@@ -83,7 +83,7 @@ class ActivitiesController extends CI_Controller
     }
 
     public function clear()
-    { 
+    {
         $this->activity->clear();
 
         $msg = "Activity plan has been cleared";
